@@ -1,4 +1,5 @@
 import { useContext, useState } from  'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../../context/auth';
 
 import { Container, Form, RegisterLink, Title } from '../Login/styles';
@@ -14,6 +15,8 @@ function Register() {
   const [confirmPassowrd, setConfirmPassword] = useState('');
 
   const { signUp } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   function handleSignUp() {
 
@@ -34,6 +37,11 @@ function Register() {
       email,
       password
     });
+    setName('');
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
+    navigate('/login');
   }
 
   return (
@@ -47,7 +55,9 @@ function Register() {
           <Input onChange={text => setConfirmPassword(text.target.value)} type="password" placeholder='Confirme sua senha' />
           <Button onClick={handleSignUp} type="button">Registrar</Button>
         </Form>
-        <RegisterLink href="/">Já tem uma conta? Entre</RegisterLink>
+        <Link to='/login'>
+          <RegisterLink>Já tem uma conta? Entre</RegisterLink>
+        </Link>
       </LoginContainer>
     </Container>
   );
