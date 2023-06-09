@@ -2,6 +2,8 @@ import { Container, Title, Subtitle, LoginContainer, Form, RegisterLink } from '
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
+import { Link } from 'react-router-dom';
+
 function Login() {
   return (
     <Container>
@@ -13,7 +15,9 @@ function Login() {
           <Input type="password" placeholder="Digite sua senha" />
           <Button type="submit">Entrar</Button>
         </Form>
-        <RegisterLink href="/register">Não tem uma conta? Cadastre-se</RegisterLink>
+        <Link to='/register'>
+          <RegisterLink href="/register">Não tem uma conta? Cadastre-se</RegisterLink>
+        </Link>
       </LoginContainer>
     </Container>
   );
