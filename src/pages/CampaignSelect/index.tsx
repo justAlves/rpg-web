@@ -5,6 +5,7 @@ import { FiPlus } from 'react-icons/fi';
 import api from '../../api';
 import Modal from '../../components/Modal';
 
+
 function CampaignSelect() {
 
   const [campaigns, setCampaigns] = useState([]);
@@ -23,13 +24,8 @@ function CampaignSelect() {
 
   useEffect(() => {
     async function loadCampaigns() {
-      const response = await api.get('/campaign', {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('@token')}`
-        }
-      })
-        .then(res => setCampaigns(res.data.campaign));
-
+      const response = await api.get('/campaign');
+      setCampaigns(response.data.campaign);
     }
 
     loadCampaigns();
