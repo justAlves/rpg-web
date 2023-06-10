@@ -6,7 +6,3 @@
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
-
-input[type='range']::-webkit-slider-thumb{
-  visibility: hidden;
-}
