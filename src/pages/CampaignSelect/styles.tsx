@@ -12,6 +12,7 @@ export const CampaignContainer = styled.div`
   padding: 1rem;
   border: 1px solid #fff;
   border-radius: 0.5rem;
+  flex-wrap: wrap;
 `;
 
 export const CampaignCard = styled.div<CampaignCardProps>`

@@ -4,9 +4,16 @@ import { CampaignContainer, CampaignCard } from './styles';
 import { FiPlus } from 'react-icons/fi';
 import api from '../../api';
 import Modal from '../../components/Modal';
+import { useNavigate } from 'react-router-dom';
 
+interface Campaign {
+  id: string;
+  name: string;
+}
 
 function CampaignSelect() {
+
+  const navigate = useNavigate();
 
   const [campaigns, setCampaigns] = useState([]);
   const [modal, setModal] = useState(false);
@@ -29,14 +36,18 @@ function CampaignSelect() {
     }
 
     loadCampaigns();
-  }, [modal]);
+  }, [modal, campaigns]);
+
+  function handleSelectCampaign(id: string) {
+    navigate(`/characters/campaign/${id}`);
+  }
 
   return (
     <Container>
       <Title>Selecione sua Campanha</Title>
       <CampaignContainer>
-        {campaigns.map((campaign: any) => (
-          <CampaignCard key={campaign.id}>
+        {campaigns.map((campaign: Campaign) => (
+          <CampaignCard onClick={() => handleSelectCampaign(campaign.id)} key={campaign.id}>
             <h1>{campaign.name}</h1>
           </CampaignCard>
         ))}

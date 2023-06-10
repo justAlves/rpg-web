@@ -9,6 +9,7 @@ import AuthOrApp from './pages/AuthOrApp';
 
 import AuthProvider from './context/auth';
 import CampaignSelect from './pages/CampaignSelect';
+import Characters from './pages/Characters';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,11 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: <Register />,
-  }
+  },
+  {
+    path: '/characters/campaign/:campaign_id',
+    element: <Characters />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
