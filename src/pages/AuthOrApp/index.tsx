@@ -14,7 +14,7 @@ function AuthOrApp() {
 
       if(token) {
         api.defaults.headers.Authorization = `Bearer ${token}`;
-        navigate('/campaigns');
+        setTimeout(() => navigate('/campaigns'), 3000);
         console.log('Você está logado');
       } else {
         navigate('/login');

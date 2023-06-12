@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Title } from '../Login/styles';
 import api from '../../api';
-import { CharacterCard } from './styles';
+import { AvatarContainer, CharacterCard, CharacterName } from './styles';
 import { CampaignContainer } from '../CampaignSelect/styles';
+import { Slider } from '@mui/material';
+import { AiOutlineUser } from 'react-icons/ai';
 
 interface Character {
   id: string;
@@ -27,15 +29,54 @@ function Characters() {
       setCharacters(response.data.character);
     }
 
-    loadCharacters();
+    setInterval(() => loadCharacters(), 3000);
+    
   }, []);
+
+  function lifeColor(character: Character){
+    if(character.currentLife > character.maxLife/2){
+      return 'success';
+    }else if(character.currentLife > character.maxLife/4){
+      return 'warning';
+    }else{
+      return 'error';
+    }
+  }
 
   return (
     <Container>
       <CampaignContainer>
         {characters.map((character: Character) => (
           <CharacterCard key={character.id}>
-            <Title>{character.name}</Title>
+            <CharacterName>{character.name}</CharacterName>
+            <AvatarContainer>
+              <AiOutlineUser size={150} color='#9c9c9c'/>
+            </AvatarContainer>
+            <Slider
+              sx={{
+                height: 20,
+              }}
+              defaultValue={character.currentLife}
+              max={character.maxLife}
+              value={character.currentLife}
+              min={0}
+              disableSwap
+              draggable={false}
+              color={lifeColor(character)}
+              valueLabelDisplay='on'
+            />
+            <Slider
+              sx={{
+                height: 20,
+              }}
+              defaultValue={character.currentSanity}
+              max={character.maxSanity}
+              value={character.currentSanity}
+              min={0}
+              disableSwap
+              draggable={false}
+              valueLabelDisplay='on'
+            />
           </CharacterCard>
         ))}
       </CampaignContainer>

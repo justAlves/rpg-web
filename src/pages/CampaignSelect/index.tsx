@@ -35,7 +35,7 @@ function CampaignSelect() {
       setCampaigns(response.data.campaign);
     }
 
-    loadCampaigns();
+    setTimeout(() => loadCampaigns(), 1000);
   }, [modal, campaigns]);
 
   function handleSelectCampaign(id: string) {
