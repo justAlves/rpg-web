@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Title } from '../Login/styles';
+import { Container } from '../Login/styles';
 import api from '../../api';
 import { AvatarContainer, CharacterCard, CharacterName } from './styles';
 import { CampaignContainer } from '../CampaignSelect/styles';

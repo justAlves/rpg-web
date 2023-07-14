@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { ModalClose, ModalContainer, ModalContent } from './styles';
 import { Form, Title } from '../../pages/Login/styles';
 import Input from '../Input';
 import Button from '../Button';
 import { FiX } from 'react-icons/fi';
-import api from '../../api';
 
 type ModalProps = {
   onClick: () => void;
